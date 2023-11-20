@@ -12,3 +12,4 @@ Spring Boot offers a variety of methods for measuring execution time and other m
 ## Measuring execution time using Spring AOP
 This is a very easy way that you just implement the AOP concept to capture logs, which I have a blog to provide an example of implementing here [spring-boot-centralized-logging-aop](https://github.com/santipabWannakiri/spring-boot-centralized-logging-aop)
 Once you've followed the provided example, you may need to make slight adjustments to the code, particularly in the @Around annotation.
+<img src="images/capture-execute-time.JPG"  alt="image description" width="1000" height="180">
