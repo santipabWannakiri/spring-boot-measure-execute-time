@@ -9,8 +9,10 @@ Consequently, I have chosen to document my research findings in this blog to add
 
 Spring Boot offers a variety of methods for measuring execution time and other metric aspects. In this blog, I will illustrate a few approaches to measuring the execution time of transactions with practical examples.
 
-## Measuring execution time using Spring AOP
+## 1.Measuring execution time using Spring AOP
 This is a very easy way that you just implement the AOP concept to capture logs, which I have a blog to provide an example of implementing here [spring-boot-centralized-logging-aop](https://github.com/santipabWannakiri/spring-boot-centralized-logging-aop)\
 Once you've followed the provided example, you may need to make slight adjustments to the code, particularly in the @Around like the picture below.
 
 <img src="images/capture-execute-time.png"  alt="image description" width="600" height="180">
+
+## 2.Using Spring Boot Actuator
