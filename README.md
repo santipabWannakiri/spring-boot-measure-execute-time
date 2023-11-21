@@ -109,3 +109,5 @@ management.endpoints.web.exposure.include=metrics
 >`TOTAL_TIME`: The cumulative time spent processing these requests.\
 >`MAX`: The maximum time taken by a single request.
 
+
+Reference document : [Measure API Response Time](https://bootcamptoprod.com/measure-api-response-time-spring-boot/)
