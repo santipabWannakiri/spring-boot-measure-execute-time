@@ -15,7 +15,12 @@ Once you've followed the provided example, you may need to make slight adjustmen
 
 <img src="images/capture-execute-time.png"  alt="image description" width="600" height="180">
 
-## 2.Using Spring Boot Actuator
+## 2.Using Micrometer Timer Object
+Leveraging Micrometer proves highly advantageous as it facilitates the measurement of transaction execution time and offers a versatile set of interfaces including gauges, counters, and distribution. Additionally, Micrometer provides seamless integration with prominent observability systems such as Prometheus, CloudWatch, Dynatrace, and more.
+To incorporate Micrometer into your project, consider following the instructions outlined below:
+
+
+## 3.Using Spring Boot Actuator
 This way, it might not provide exactly the execution time. However, I believe it is still good to know what metrics the actuator can provide for us. In order to start up the actuator, please follow the instructions below.
 
 1. Add Actuator dependency
@@ -80,3 +85,4 @@ management.endpoints.web.exposure.include=metrics
 >`COUNT`: The total number of requests (10 in this case).\
 >`TOTAL_TIME`: The cumulative time spent processing these requests.\
 >`MAX`: The maximum time taken by a single request.
+
