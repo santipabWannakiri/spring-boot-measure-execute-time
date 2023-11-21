@@ -16,9 +16,28 @@ Once you've followed the provided example, you may need to make slight adjustmen
 <img src="images/capture-execute-time.png"  alt="image description" width="600" height="180">
 
 ## 2.Using Micrometer Timer Object
-Leveraging Micrometer proves highly advantageous as it facilitates the measurement of transaction execution time and offers a versatile set of interfaces including gauges, counters, and distribution. Additionally, Micrometer provides seamless integration with prominent observability systems such as Prometheus, CloudWatch, Dynatrace, and more.
+Leveraging Micrometer proves highly advantageous as it facilitates the measurement of transaction execution time and offers a versatile set of interfaces including gauges, counters, and distribution. Additionally, Micrometer provides seamless integration with prominent observability systems such as Prometheus, CloudWatch, Dynatrace, and more.\
 To incorporate Micrometer into your project, consider following the instructions outlined below:
 
+1. Add Micrometer Core dependency
+ ```
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-core</artifactId>
+            <version>${micrometer.version}</version>
+        </dependency>
+ ```
+
+#### NOTE:
+>`Timer.builder("transaction.execution.time")`: This creates a Timer.Builder for a Micrometer Timer with the specified name, in this case, "transaction.execution.time". The name helps identify the timer in the metrics system.
+
+>`register(meterRegistry)`: The MeterRegistry is responsible for managing and publishing metrics to a monitoring system. In a Spring Boot application, the meterRegistry is typically provided by the Micrometer integration with the chosen monitoring system (e.g., Prometheus).
+
+>`Timer.start()`: This static method is part of the Micrometer Timer class, and it returns a new Timer.Sample instance. This sample is used to measure the time taken for a specific block of code.
+
+>`timer.record`: method of the Micrometer Timer to capture the duration of the code block enclosed in the lambda expression. 
+
+>`sample.stop(timer)`: part stops the timer and returns the elapsed time in nanoseconds.
 
 ## 3.Using Spring Boot Actuator
 This way, it might not provide exactly the execution time. However, I believe it is still good to know what metrics the actuator can provide for us. In order to start up the actuator, please follow the instructions below.
@@ -81,7 +100,7 @@ management.endpoints.web.exposure.include=metrics
     ]
 }
 ```
-#### Note 
+#### NOTE: 
 >`COUNT`: The total number of requests (10 in this case).\
 >`TOTAL_TIME`: The cumulative time spent processing these requests.\
 >`MAX`: The maximum time taken by a single request.
