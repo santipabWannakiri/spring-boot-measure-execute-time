@@ -16,3 +16,67 @@ Once you've followed the provided example, you may need to make slight adjustmen
 <img src="images/capture-execute-time.png"  alt="image description" width="600" height="180">
 
 ## 2.Using Spring Boot Actuator
+This way, it might not provide exactly the execution time. However, I believe it is still good to know what metrics the actuator can provide for us. In order to start up the actuator, please follow the instructions below.
+
+1. Add Actuator dependency
+ ```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+ ```
+
+2. Enable "metrics" in the application.properties file for the endpoint will be accessible via HTTP in the Actuator's web interface.
+ ```
+management.endpoints.web.exposure.include=metrics
+ ```
+
+3. Access to `http://localhost:8080/actuator/metrics` You're going to see a list of endpoints that you can access to view the information.
+```json
+{
+    "names": [
+        "application.ready.time",
+        "application.started.time",
+        "disk.free",
+        "disk.total",
+        "executor.active",
+        .....
+    ]
+}
+```
+
+4. I suggest taking a look at `http.server.requests` enpoint, and to access them, the URL will be like this: `http://localhost:8080/actuator/metrics/http.server.requests`
+
+```json
+{
+    "name": "http.server.requests",
+    "baseUnit": "seconds",
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 10.0
+        },
+        {
+            "statistic": "TOTAL_TIME",
+            "value": 0.14230216499999998
+        },
+        {
+            "statistic": "MAX",
+            "value": 0.055251792
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "exception",
+            "values": [
+                "none"
+            ]
+        },
+        ....
+    ]
+}
+```
+#### Note 
+>`COUNT`: The total number of requests (10 in this case).\
+>`TOTAL_TIME`: The cumulative time spent processing these requests.\
+>`MAX`: The maximum time taken by a single request.
