@@ -28,6 +28,10 @@ To incorporate Micrometer into your project, consider following the instructions
         </dependency>
  ```
 
+2. Modify the code in either the Controller or Service class based on your specific use case. In this example, I've placed it in the Controller as shown below:
+
+<img src="images/micrometer-example-code.png"  alt="image description" width="600" height="180">   
+
 #### NOTE:
 >`Timer.builder("transaction.execution.time")`: This creates a Timer.Builder for a Micrometer Timer with the specified name, in this case, "transaction.execution.time". The name helps identify the timer in the metrics system.
 
